@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
+  </head> 
+  <body>
+  <form id="postForm" method="post" action ="/" enctype="multipart/form-data">
+  <p>Choose File: <input type="file" name="fileUpload" /></p>
+  <input type="submit" id="button"  value="Upload" />
+  </form>
+  </body>
+    <script>
+      $(document).ready(function() {
+        $("#button").prop('disabled',true);
+        var file = null;
+        //retrieve file if user uploads a file
+        $("#postForm").on("change",function(event) {
+          file = event.target.files[0];
+          $("#button").prop('disabled',false);
+          console.log(file,file.size);
+        });
+          $("#postForm").on("submit",function(event) {
+            event.preventDefault();  
+            var data = new FormData();
+            //if file is not null, send request to node for data to node
+            
+              console.log("in submit",file);
+              data.append('file',file);
+              $.ajax({
+                url:'/',
+                dataType:'json',
+                method:'POST',
+                data: data,
+                processData:false,
+                contentType:false,
+                success:function(data){
+                  alert('File Size: ' + data.size);
+                },
+                error:function(error) {
+                  alert('There seems to be a problem..please try again!');
+                }
+          })
+          })  
+      });
+     
+    </script> 
+</html>

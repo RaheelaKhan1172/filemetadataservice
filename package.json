@@ -1,0 +1,17 @@
+{
+  "name": "upload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "raheela khan",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "multer": "^1.1.0",
+    "multiparty": "^4.1.2"
+  }
+}
